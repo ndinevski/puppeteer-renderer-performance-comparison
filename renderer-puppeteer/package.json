@@ -1,0 +1,43 @@
+{
+  "name": "renderer-puppeteer-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc && copyfiles package* dist/ && cd dist && npm install && npm prune --omit=dev",
+    "check-types": "tsc",
+    "create-layer": "cd layer/nodejs && npm ci && cd .. && zip -r lambda-layer.zip nodejs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.654.0",
+    "@aws-sdk/lib-storage": "^3.658.1",
+    "@pogodoc/utils": "^0.2.7",
+    "archiver": "^7.0.1",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@sparticuz/chromium": "^123.0.1",
+    "@types/archiver": "^6.0.2",
+    "@types/aws-lambda": "^8.10.134",
+    "@types/ejs": "^3.1.5",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.10",
+    "@types/node": "20.11.19",
+    "aws-cdk": "2.130.0",
+    "aws-lambda": "^1.0.7",
+    "copyfiles": "^2.4.1",
+    "jest": "^29.7.0",
+    "puppeteer": "^10.0.0",
+    "puppeteer-core": "^22.6.4",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.3.3"
+  }
+}
