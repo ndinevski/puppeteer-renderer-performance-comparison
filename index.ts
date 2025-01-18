@@ -12,106 +12,78 @@ const EKS_URL =
 const template = readHtml("./data/template.ejs");
 const data = readJsonFile("./data/data.json");
 
-async function generateDocuments(): Promise<any> {
+const NUM_REQUESTS = 100;
+
+async function sendRequest(url: string) {
   try {
-    const lambdaGeneratedResponse = await axios.post(LAMBDA_URL, {
-      template,
-      data,
-    });
-
-    const ec2GeneratedResponse = await axios.post(
-      EC2_URL,
-      {
-        template,
-        data,
-      }
-    );
-
-    const eksGeneratedResponse = await axios.post(
-      EKS_URL,
-      {
-        template,
-        data,
-      },
-    );
-
+    const response = await axios.post(url, { template, data });
     return {
-      lambdaGeneratedPdf: {
-        pdf: lambdaGeneratedResponse.data.pdf,
-        requestProcessedTime: lambdaGeneratedResponse.data.requestProcessedTime,
-        pdfGenerationTime: lambdaGeneratedResponse.data.pdfGenerationTime,
-      },
-      ec2GeneratedPdf: {
-        pdf: ec2GeneratedResponse.data.pdf,
-        requestProcessedTime: ec2GeneratedResponse.data.requestProcessedTime,
-        pdfGenerationTime: ec2GeneratedResponse.data.pdfGenerationTime,
-      },
-      eksGeneratedPdf: {
-        pdf: eksGeneratedResponse.data.pdf,
-        requestProcessedTime: eksGeneratedResponse.data.requestProcessedTime,
-        pdfGenerationTime: eksGeneratedResponse.data.pdfGenerationTime,
-      },
+      pdf: response.data.pdf,
+      requestProcessedTime: parseFloat(response.data.requestProcessedTime),
+      pdfGenerationTime: parseFloat(response.data.pdfGenerationTime),
     };
   } catch (error) {
-    console.error("Error generating document:", error);
+    console.error(`Error with request to ${url}:`, error);
     throw error;
   }
 }
 
+async function performLoadTest(url: string, serviceName: string) {
+  const results = [];
+
+  for (let i = 0; i < NUM_REQUESTS; i++) {
+    console.log(`Sending request ${i + 1} to ${serviceName}...`);
+    const result = await sendRequest(url);
+    results.push(result);
+  }
+
+  const averageResponseTime = (
+    results.reduce((sum, r) => sum + r.requestProcessedTime, 0) / NUM_REQUESTS
+  ).toFixed(2);
+
+  const averageGenerationTime = (
+    results.reduce((sum, r) => sum + r.pdfGenerationTime, 0) / NUM_REQUESTS
+  ).toFixed(2);
+
+  return {
+    averageResponseTime,
+    averageGenerationTime,
+    lastPdf: results[results.length - 1]?.pdf,
+  };
+}
+
 async function saveDocuments() {
   try {
-    const { lambdaGeneratedPdf, ec2GeneratedPdf, eksGeneratedPdf } = await generateDocuments();
-    let pdfBuffer: Buffer;
+    const lambdaResults = await performLoadTest(LAMBDA_URL, "LAMBDA");
+    const ec2Results = await performLoadTest(EC2_URL, "EC2");
+    const eksResults = await performLoadTest(EKS_URL, "EKS");
 
-    // EC2
-    pdfBuffer = Buffer.from(ec2GeneratedPdf.pdf || "", "base64");
-    fs.writeFile("results/container-document.pdf", pdfBuffer, (err) => {
-      if (err) {
-        console.error("Error writing PDF file", err);
-      } else {
-        console.log(
-          "1. EC2 - PDF file saved with name container-document.pdf\n\tResponse time: " +
-            ec2GeneratedPdf.requestProcessedTime +
-            "\n\tGeneration time: " +
-            ec2GeneratedPdf.pdfGenerationTime +
-            "\n"
-        );
-      }
-    });
+    // Save the last PDF from each service for verification
+    fs.writeFileSync(
+      "results/lambda-document.pdf",
+      Buffer.from(lambdaResults.lastPdf || "", "base64")
+    );
+    console.log(
+      `LAMBDA - Avg Response Time: ${lambdaResults.averageResponseTime}s, Avg Generation Time: ${lambdaResults.averageGenerationTime}s`
+    );
 
-    // LAMBDA
-    pdfBuffer = Buffer.from(lambdaGeneratedPdf.pdf || "", "base64");
-    fs.writeFile("results/lambda-document.pdf", pdfBuffer, (err) => {
-      if (err) {
-        console.error("Error writing PDF file", err);
-      } else {
-        console.log(
-          "2. LAMBDA - PDF file saved with name lambda-document.pdf\n\tResponse time: " +
-            lambdaGeneratedPdf.requestProcessedTime +
-            "\n\tGeneration time: " +
-            lambdaGeneratedPdf.pdfGenerationTime +
-            "\n"
-        );
-      }
-    });
+    fs.writeFileSync(
+      "results/ec2-document.pdf",
+      Buffer.from(ec2Results.lastPdf || "", "base64")
+    );
+    console.log(
+      `EC2 - Avg Response Time: ${ec2Results.averageResponseTime}s, Avg Generation Time: ${ec2Results.averageGenerationTime}s`
+    );
 
-    // EKS
-    pdfBuffer = Buffer.from(eksGeneratedPdf.pdf || "", "base64");
-    fs.writeFile("results/eks-document.pdf", pdfBuffer, (err) => {
-      if (err) {
-        console.error("Error writing PDF file", err);
-      } else {
-        console.log(
-          "3. EKS - PDF file saved with name eks-document.pdf\n\tResponse time: " +
-            eksGeneratedPdf.requestProcessedTime +
-            "\n\tGeneration time: " +
-            eksGeneratedPdf.pdfGenerationTime +
-            "\n"
-        );
-      }
-    });
+    fs.writeFileSync(
+      "results/eks-document.pdf",
+      Buffer.from(eksResults.lastPdf || "", "base64")
+    );
+    console.log(
+      `EKS - Avg Response Time: ${eksResults.averageResponseTime}s, Avg Generation Time: ${eksResults.averageGenerationTime}s`
+    );
   } catch (error) {
-    console.error("An error occurred while generating documents:", error);
+    console.error("An error occurred during load testing:", error);
   }
 }
 
