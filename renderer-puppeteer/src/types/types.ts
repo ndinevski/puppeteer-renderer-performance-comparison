@@ -1,9 +1,10 @@
 export type PuppeteerRequest = {
-  template: string;
-  data: any;
+  body: { template: string; data: any };
 };
 
 export type PuppeteerResponse = {
-  success: boolean;
-  result?: any;
-}
+  statusCode: number;
+  headers?: any;
+  body: any;
+  isBase64Encoded?: boolean;
+};

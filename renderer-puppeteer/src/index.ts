@@ -1,19 +1,19 @@
 import { Browser } from "puppeteer-core";
 
-import {
-  createPdf,
-  launchBrowser,
-  processPageContent,
-} from "./utils";
+import { createPdf, launchBrowser, processPageContent } from "./utils";
 
 import ejs from "ejs";
 
-import { PuppeteerRequest, PuppeteerResponse } from "./types/types";
+import { PuppeteerResponse } from "./types/types";
 
-export const handler = async (event: PuppeteerRequest): Promise<PuppeteerResponse> => {
-  const { template, data } = event;
+export const handler = async (event: {
+  body: any;
+}): Promise<PuppeteerResponse> => {
+  const { template, data } = JSON.parse(event.body);
 
   let browser: Browser | null = null;
+
+  const requestReceivedTime = Date.now();
 
   try {
     const html = ejs.render(template, data);
@@ -24,20 +24,33 @@ export const handler = async (event: PuppeteerRequest): Promise<PuppeteerRespons
 
     await processPageContent(page, html);
 
-    const pdf = await createPdf(
-      page,
-    );
-    
+    const pdfGenerationStartTime = Date.now();
+
+    const pdf = await createPdf(page);
+
+    const pdfGenerationEndTime = Date.now();
+
+    const pdfGenerationTime = (pdfGenerationEndTime - pdfGenerationStartTime) / 1000;
+    const requestProcessedTime = (Date.now() - requestReceivedTime) / 1000; 
+
     return {
-      success: true,
-      result: pdf,
-    }
+      statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pdf: pdf.toString("base64"),
+        requestProcessedTime: requestProcessedTime.toFixed(2),
+        pdfGenerationTime: pdfGenerationTime.toFixed(2),
+      }),
+    };
   } catch (error) {
-    console.log({ error })
+    console.log({ error });
     return {
-      success: false,
-      result: undefined,
-    }
+      statusCode: 500,
+      headers: { "Content-type": "application/json" },
+      body: "ERROR: Could not create PDF",
+    };
   } finally {
     if (browser) {
       await browser.close();

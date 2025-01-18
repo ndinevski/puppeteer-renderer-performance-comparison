@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <!-- <link rel="stylesheet" href="invoice_styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+          }
+          
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-bottom: 0.75em;
+        }
+        
+        h3 {
+            font-size: 1.75em;
+            margin-bottom: 1em;
+        }
+        
+        p {
+            font-size: 1em;
+            line-height: 1;
+        }
+        
+        #header-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            vertical-align: center;
+            margin-bottom: 2em;
+            margin-top: 2em;
+            padding: 0 1em;
+            border-bottom: 1px solid #ccc;
+            background-color: #fff;
+            text-align: right;
+        }
+        
+        #header-container img{
+            height: 165px;
+            width: auto;
+        }
+        
+        #header-info p{
+            line-height: 0.5;
+        }
+        
+        #header-info p:first-child{
+            font-weight: bold;
+        }
+        
+        #summary-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            vertical-align: center;
+            margin-bottom: 2em;
+            margin-top: 2em;
+            padding: 0 1em;
+            background-color: #fff;
+            margin: 0px 20px;
+        }
+        
+        #summary-container div:first-child p{
+            line-height: 0.5;
+        }
+        
+        .gray-text {
+            color: gray;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+        
+        #summary-container div:nth-child(2){
+            text-align: right;
+        }
+        
+        #summary-container div:nth-child(2) p{
+            padding: 3px 10px;
+        }
+        
+        #summary-container div:nth-child(2) span{
+            font-weight: bold;
+        }
+        
+        .gray-background {
+            background-color: #dedede;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #d9d9d9;
+        }
+        
+        th {
+            background-color: #cecdcd;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        td {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tfoot td {
+            border-top: 2px solid #000;
+        }
+        
+        tfoot {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+        
+        tfoot tr:last-child td {
+            border-top: none;
+        }
+          
+        
+        #info-container p{
+            line-height: 0.5;
+            font-size: 14px;
+        }
+        
+        #info-container{
+            margin-top: 4em;
+        }
+        
+        footer {
+            width: 100%;
+            background-color: #fff;
+            text-align: center;
+            font-size: 14px;
+            color: rgb(185, 182, 182);
+            padding-top: 10px;
+        }
+        
+        @media print {
+            tfoot {
+              display: none;
+            }
+          }
+        
+        @media print {
+            tfoot:last-of-type{
+                display: table-row-group;
+            }
+        }
+
+        /*@media print {
+            footer{
+              display: none;
+            }
+          }
+        
+        @media print {
+            footer:last-of-type{
+                display:contents;
+            }
+        }*/
+
+        /* @media print {
+            thead {
+                display: none;
+            }
+        }
+        
+        @media print {
+            thead:first-of-type{
+                display: table-row-group;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header-container">
+            <img class="header-item" src="https://i.ibb.co/tPBKLWf/logo.png"/>
+            <div class="header-item">
+                <div>
+                    <h1>INVOICE</h1>
+                    <div id="header-info">
+                        <p><%= data.my_company_info.name %></p>
+                        <p><%= data.my_company_info.address %></p>
+                        <p><span><%= data.my_company_info.city %></span><span><%= data.my_company_info.zip %></span></p>
+                        <p><%= data.my_company_info.country %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="summary-container">
+        <div class="summary-item">
+            <p>
+                <p class="gray-text">BILL TO</p>
+                <p class="bold-text"><%= data.bill_to_company.name %></p>
+                <p><%= data.bill_to_company.address %></p>
+                <p><span><%= data.bill_to_company.city %></span> <span><%= data.bill_to_company.zip %></span></p>
+                <p><%= data.bill_to_company.country %></p>
+            </p>
+        </div>
+        <div class="summary-item">
+            <p>
+                <p><span>Invoice Number: </span><%= data.invoice_info.number %></p>
+                <p><span>Invoice Date: </span><%= data.invoice_info.date %></p>
+                <p><span>Payment Due: </span><%= data.invoice_info.due_payment %></p>
+                <p class="gray-background"><span>Amount Due (<%= data.invoice_info.currency_code %>): </span><span><%= data.invoice_info.currency %></span><span><%= data.invoice_info.due_amount %></span></p>
+            </p>
+        </div>
+    </section>
+    <section id="calculation-container">
+        <div>
+            <table id="items-table">
+                <thead>
+                    <tr class="table-row">
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.items.list.forEach(function(item) { %>
+                        <tr class="table-row">
+                            <td>
+                                <p><%= item.name%></p>
+                            </td>
+                            <td>
+                                <p><%= item.quantity%></p>
+                            </td>
+                            <td>
+                                <p><span><%= data.items.currency%></span><%= item.price%></p>
+                            </td>
+                            <td>
+                                <p><span><%= data.items.currency%></span><%= item.amount%></p>
+                            </td>
+                        </tr>
+                      <% }); %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Subtotal:</th>
+                        <th id="totalSum"><span><%= data.items.currency%></span><%= data.items.subtotal%></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Total:</th>
+                        <th id="totalSum"><span><%= data.items.currency%></span><%= data.items.total%></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Amount Due (<%= data.items.currency_code%>):</th>
+                        <th id="totalSum"><span><%= data.items.currency%></span><%= data.items.due_amount%></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <section id="info-container">
+        <p>
+            <p class="bold-text">Notes / Terms</p>
+            <p><span>Swift Code: </span><%= data.bank_account.swift%></p>
+            <p><span>IBAN: </span><%= data.bank_account.iban%></p>
+            <p><span>Bank name: </span><%= data.bank_account.bank_name%></p>
+            <p><span>Bank address: </span><%= data.bank_account.bank_address%></p>
+            <p>Relieved from VAT according to Article 14 paragraph 3 item 4</p>
+        </p>
+    </section>
+    <footer>
+        <p>
+            Any invoice which remains unpaid for longer than 10 working days from due date will incur 2% interest on the total of the
+            invoice and will increase by 2% every 10 days
+        </p>
+    </footer>
+</body>
+</html>
+

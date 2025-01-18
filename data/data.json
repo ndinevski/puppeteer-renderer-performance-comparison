@@ -1,0 +1,642 @@
+{
+  "data": {
+    "my_company_info": {
+      "logo": "https://image_link.png",
+      "name": "KodHem DOOEL Skopje",
+      "address": "Mito Hadzivasilev Jasmin br.18",
+      "city": "Skopje",
+      "zip": "1000",
+      "country": "North Macedonia"
+    },
+    "bill_to_company": {
+      "name": "CODE CHEMISTRY INC",
+      "address": "Apt 14, 3870 Rue Saint-Hubert",
+      "city": "Montreal, Quebec",
+      "zip": "H2L4A5",
+      "country": "Canada"
+    },
+    "invoice_info": {
+      "number": "1101",
+      "date": "02-03-2020",
+      "due_payment": "02-04-2020",
+      "due_amount": "100.00",
+      "currency": "$",
+      "currency_code": "USD"
+    },
+    "items": {
+      "list": [
+        {
+          "name": "Development hours 1",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 2",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 3",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 4",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 5",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 6",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 7",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 8",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 9",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 10",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 11",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 12",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 13",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 14",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 15",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 16",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 17",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 18",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 19",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 20",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 21",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 22",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 3",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 4",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 25",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 26",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 27",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 28",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 29",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 30",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 31",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 32",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 33",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 34",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 35",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 36",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 37",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 38",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 39",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 40",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 41",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 42",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 43",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 44",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 45",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 46",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 47",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 48",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 49",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 50",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 1",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 52",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 53",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 54",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 55",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 56",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 57",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 58",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 59",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 60",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 61",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 62",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 63",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 64",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 65",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 66",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 67",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 68",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 69",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 70",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 71",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 72",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 73",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 74",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 75",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 76",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 77",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 78",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 79",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 80",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 81",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 82",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 83",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 84",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 85",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 86",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 87",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 88",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 89",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 90",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 91",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 92",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 93",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 94",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 95",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 96",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 97",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 98",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 99",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        },
+        {
+          "name": "Development hours 100",
+          "price": "1.00",
+          "amount": "1.00",
+          "quantity": 1
+        }
+      ],
+      "subtotal": "100.00",
+      "total": "100.00",
+      "due_amount": "100.00",
+      "currency": "$",
+      "currency_code": "USD"
+    },
+    "bank_account": {
+      "swift": "TUTNMK22",
+      "iban": "MK07210701001185830",
+      "bank_name": "NLB Tutunska banka AD Skopje",
+      "bank_address": "Vodnjanska 1, 1000 Skopje, Republic of North Macedonia"
+    }
+  }
+}
