@@ -1,0 +1,23 @@
+{
+  "name": "renderer-infrastructure",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "preview": "pulumi preview"
+  },
+  "dependencies": {
+    "@pulumi/aws": "^6.76.0",
+    "@pulumi/azure-native": "^3.8.0",
+    "@pulumi/eks": "^2.6.0",
+    "@pulumi/kubernetes": "^4.20.0",
+    "@pulumi/pulumi": "^3.153.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,4 @@
+name: renderer-infrastructure
+runtime: nodejs
+description: Multi-service infrastructure for VM, FaaS and Kubernetes with provider abstraction.
+main: src/index.ts
