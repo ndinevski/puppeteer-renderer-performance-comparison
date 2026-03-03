@@ -1,5 +1,5 @@
 config:
-  renderer-infrastructure:cloud: azure
+  renderer-infrastructure:cloud: aws # 'azure' | 'aws'
   renderer-infrastructure:projectName: puppeteer-renderer-comparison
   renderer-infrastructure:region: westeurope
   aws:region: eu-west-1

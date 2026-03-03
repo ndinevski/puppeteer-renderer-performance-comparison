@@ -77,6 +77,8 @@ pulumi config get cloud
 ```bash
 cd infrastructure
 pulumi stack init dev   # only once
+pulumi stack select dev
+pulumi config set cloud aws
 pulumi config set aws:region eu-west-1
 pulumi preview
 ```
@@ -85,6 +87,7 @@ pulumi preview
 
 ```bash
 cd infrastructure
+pulumi stack init dev   # only once
 pulumi stack select dev
 pulumi config set renderer-infrastructure:cloud azure
 pulumi config set azure-native:location westeurope
