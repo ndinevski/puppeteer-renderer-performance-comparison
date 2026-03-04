@@ -3,6 +3,8 @@
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{amsmath}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
 
 \begin{document}
 
@@ -118,9 +120,12 @@ A major practical feature is output normalization. Independent of cloud, deploym
 
 This allows CI scripts, smoke tests, and user tooling to operate with minimal provider awareness.
 
-% Optional Figure 1:
-% Add a diagram: "Code architecture view" with five layers
-% (Contract, Factory, Config, Provider Implementations, Outputs).
+\begin{figure}[h]
+\centering
+\includegraphics[width=\columnwidth]{layer-structure.png}
+\caption{Code architecture view}
+\label{fig:layer_structure}
+\end{figure}
 
 \section{Detailed Component-Level Analysis}
 \subsection{Networking Layer}
@@ -264,12 +269,12 @@ Migration in this architecture is designed as controlled switching rather than f
 \subsection{Minimal Configuration Delta}
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{3.2cm}|p{4.3cm}|}
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.8cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
 \hline
 {}\textbf{Change Category} & \textbf{Update Required} \\
 \hline
-Cloud target & \texttt{renderer-infrastructure:cloud} \\
-Location & \texttt{aws:region} or \texttt{azure-native:location} \\
+Cloud target & \url{renderer-infrastructure:cloud} \\
+Location & \url{aws:region} or \url{azure-native:location} \\
 Secrets & provider auth and secure values (e.g. VM admin password) \\
 Service intent & typically unchanged (image/port/env/replicas) \\
 Post-deploy validation & endpoint checks and basic rendering test \\
@@ -327,11 +332,6 @@ The current implementation uses one active provider per stack. True federation r
     \item \textbf{Phase 4}: add unified telemetry, SLOs, and policy gatekeeping.
 \end{enumerate}
 
-% Optional Figure 2:
-% Add "Federation reference architecture":
-% Users -> Global DNS/Traffic Manager -> AWS endpoints + Azure endpoints,
-% with shared observability and policy plane.
-
 \section{Limitations}
 This case study is strong in architectural depth but has the following limitations:
 \begin{itemize}
@@ -347,6 +347,10 @@ This extended analysis confirms that the Pulumi-based architecture provides subs
 The most portable assets are service intent, workload artifacts, and output contracts. The least portable assets are IAM, cloud-native service plumbing, and control-plane provisioning. Therefore, migration is not ``free'', but it is transformed from an ad-hoc rewrite into an engineered and testable workflow.
 
 For the subject of interoperability, portability, and federation, this project demonstrates a realistic and academically relevant direction: use IaC abstraction to minimize lock-in, then progressively evolve from provider switching to true cross-cloud federation.
+
+\section*{Code Availability}
+The complete source code, infrastructure definitions, and paper artifacts are available in the GitHub repository:\\
+\href{https://github.com/ndinevski/puppeteer-renderer-performance-comparison/blob/master/infrastructure/README.md}{\underline{GitHub project infrastructure README}}.
 
 \begin{thebibliography}{99}
 
